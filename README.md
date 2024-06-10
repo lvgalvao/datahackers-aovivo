@@ -88,19 +88,7 @@ graph TD
     C --> D[Integrar Dados]
     D --> E[Carregar Dados no Banco de Dados]
     E --> F[(SQLite)]
-```
-
-Este diagrama descreve o fluxo de dados do projeto, desde a extração dos dados das commodities até o carregamento dos dados integrados no banco de dados SQLite.
-
-### diagram.mmd
-
-```mermaid
-graph TD
-    A[Buscar Dados das Commodities] --> B[Tratar Dados Extraídos]
-    B --> C[Processar Dados de Movimentação]
-    C --> D[Integrar Dados]
-    D --> E[Carregar Dados no Banco de Dados]
-    E --> F[(SQLite)]
+    F --> G[Consulta: Quanto foi vendido ontem?]
 ```
 
 ### Observações
