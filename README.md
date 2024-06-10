@@ -83,12 +83,29 @@ Veja abaixo um diagrama do fluxo de dados do projeto.
 
 ```mermaid
 graph TD
-    A[Buscar Dados das Commodities] --> B[Tratar Dados Extraídos]
-    B --> C[Processar Dados de Movimentação]
-    C --> D[Integrar Dados]
-    D --> E[Carregar Dados no Banco de Dados]
-    E --> F[(SQLite)]
-    F --> G[Consulta: Quanto foi vendido ontem?]
+    subgraph Extração
+        A1[Buscar Dados das Commodities da API] --> B1[Tratar Dados Extraídos da API]
+        A2[Buscar Dados do Excel] --> B2[Tratar Dados Extraídos do Excel]
+    end
+
+    subgraph Transformação
+        B1 --> C[Processar Dados de Movimentação]
+        B2 --> C
+        C --> D[Integrar Dados]
+    end
+
+    subgraph Carga
+        D --> E[Carregar Dados no Banco de Dados]
+    end
+
+    subgraph Armazenamento
+        E --> F[(SQLite)]
+    end
+
+    subgraph Consultas
+        F --> G[Consulta: Quanto foi vendido ontem?]
+    end
+
 ```
 
 ### Observações
