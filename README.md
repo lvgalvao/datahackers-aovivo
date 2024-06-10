@@ -1,34 +1,22 @@
 ### README.md
-
-```markdown
+==
 # Projeto de ETL para Análise de Commodities
 
 Este projeto implementa um pipeline ETL (Extração, Transformação e Carga) para analisar dados de commodities, como petróleo bruto, ouro e prata. Utilizamos a biblioteca `yfinance` para extrair dados históricos das commodities, processamos dados de movimentação e armazenamos os dados resultantes em um banco de dados SQLite.
 
 ## Estrutura do Projeto
 
-```plaintext
-.
+```bash
 ├── data/
 │   ├── dw/
 │   │   └── commodities_dw.db
 │   ├── external/
 │   │   └── movimentacao_commodities.csv
-│   ├── processed/
-│   │   └── commodities_data.csv
 ├── extract.py
 ├── transforme.py
 ├── load.py
-├── README.md
-└── diagram.mmd
+└── README.md
 ```
-
-## Dependências
-
-- `pandas`
-- `yfinance`
-- `sqlite3`
-- `os`
 
 Para instalar as dependências, execute:
 
@@ -79,15 +67,6 @@ Os dados integrados são armazenados em um banco de dados SQLite no arquivo `dat
 
 ## Consultas Úteis
 
-### Verificar quanto foi vendido ontem
-
-```sql
-SELECT symbol, SUM(valor) AS total_vendido
-FROM commodities
-WHERE action = 'sell' AND date = DATE('now', '-1 day')
-GROUP BY symbol;
-```
-
 ### Verificar transações em uma data específica
 
 ```sql
@@ -112,7 +91,6 @@ graph TD
 ```
 
 Este diagrama descreve o fluxo de dados do projeto, desde a extração dos dados das commodities até o carregamento dos dados integrados no banco de dados SQLite.
-```
 
 ### diagram.mmd
 
@@ -129,7 +107,3 @@ graph TD
 
 - Certifique-se de ter o arquivo `movimentacao_commodities.csv` no diretório `data/external/`.
 - Certifique-se de ter permissões para criar diretórios e arquivos no diretório `data/`.
-
----
-
-Com esse README e o diagrama Mermaid, você tem uma visão clara de como o projeto funciona, como executar cada etapa e como o fluxo de dados é estruturado.
